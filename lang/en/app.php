@@ -1,0 +1,180 @@
+<?php
+
+return [
+    /*
+    |--------------------------------------------------------------------------
+    | Application Language Lines
+    |--------------------------------------------------------------------------
+    |
+    | The following language lines are used throughout the application for
+    | various messages that we need to display to the user.
+    |
+    */
+
+    'welcome' => 'Welcome to RuangTes',
+    'dashboard' => 'Dashboard',
+    'home' => 'Home',
+    'back' => 'Back',
+    'next' => 'Next',
+    'previous' => 'Previous',
+    'continue' => 'Continue',
+    'cancel' => 'Cancel',
+    'save' => 'Save',
+    'edit' => 'Edit',
+    'delete' => 'Delete',
+    'create' => 'Create',
+    'update' => 'Update',
+    'view' => 'View',
+    'show' => 'Show',
+    'hide' => 'Hide',
+    'search' => 'Search',
+    'filter' => 'Filter',
+    'sort' => 'Sort',
+    'export' => 'Export',
+    'import' => 'Import',
+    'download' => 'Download',
+    'upload' => 'Upload',
+    'refresh' => 'Refresh',
+    'reset' => 'Reset',
+    'clear' => 'Clear',
+    'select' => 'Select',
+    'choose' => 'Choose',
+    'all' => 'All',
+    'none' => 'None',
+    'yes' => 'Yes',
+    'no' => 'No',
+    'true' => 'True',
+    'false' => 'False',
+    'active' => 'Active',
+    'inactive' => 'Inactive',
+    'enabled' => 'Enabled',
+    'disabled' => 'Disabled',
+    'pending' => 'Pending',
+    'approved' => 'Approved',
+    'rejected' => 'Rejected',
+    'completed' => 'Completed',
+    'failed' => 'Failed',
+    'success' => 'Success',
+    'error' => 'Error',
+    'warning' => 'Warning',
+    'info' => 'Information',
+    'notice' => 'Notice',
+
+    // Status messages
+    'status' => [
+        'active' => 'Active',
+        'inactive' => 'Inactive',
+        'pending' => 'Pending',
+        'suspended' => 'Suspended',
+        'banned' => 'Banned',
+        'expired' => 'Expired',
+        'completed' => 'Completed',
+        'in_progress' => 'In Progress',
+        'cancelled' => 'Cancelled',
+        'refunded' => 'Refunded',
+    ],
+
+    // Actions
+    'actions' => [
+        'create' => 'Create',
+        'edit' => 'Edit',
+        'delete' => 'Delete',
+        'view' => 'View',
+        'update' => 'Update',
+        'save' => 'Save',
+        'cancel' => 'Cancel',
+        'submit' => 'Submit',
+        'send' => 'Send',
+        'invite' => 'Invite',
+        'assign' => 'Assign',
+        'start' => 'Start',
+        'stop' => 'Stop',
+        'pause' => 'Pause',
+        'resume' => 'Resume',
+        'complete' => 'Complete',
+        'approve' => 'Approve',
+        'reject' => 'Reject',
+        'verify' => 'Verify',
+        'activate' => 'Activate',
+        'deactivate' => 'Deactivate',
+        'suspend' => 'Suspend',
+        'ban' => 'Ban',
+        'unban' => 'Unban',
+    ],
+
+    // Common messages
+    'messages' => [
+        'created_successfully' => 'Created successfully.',
+        'updated_successfully' => 'Updated successfully.',
+        'deleted_successfully' => 'Deleted successfully.',
+        'saved_successfully' => 'Saved successfully.',
+        'sent_successfully' => 'Sent successfully.',
+        'no_data_found' => 'No data found.',
+        'no_results_found' => 'No results found.',
+        'loading' => 'Loading...',
+        'processing' => 'Processing...',
+        'please_wait' => 'Please wait...',
+        'confirm_delete' => 'Are you sure you want to delete this item?',
+        'confirm_action' => 'Are you sure you want to perform this action?',
+        'unsaved_changes' => 'You have unsaved changes. Are you sure you want to leave?',
+        'session_expired' => 'Your session has expired. Please login again.',
+        'access_denied' => 'Access denied.',
+        'permission_denied' => 'You do not have permission to perform this action.',
+        'invalid_request' => 'Invalid request.',
+        'something_went_wrong' => 'Something went wrong. Please try again.',
+    ],
+
+    // Pagination
+    'pagination' => [
+        'showing' => 'Showing :first to :last of :total results',
+        'previous' => 'Previous',
+        'next' => 'Next',
+        'first' => 'First',
+        'last' => 'Last',
+    ],
+
+    // Date/Time
+    'datetime' => [
+        'today' => 'Today',
+        'yesterday' => 'Yesterday',
+        'tomorrow' => 'Tomorrow',
+        'now' => 'Now',
+        'ago' => 'ago',
+        'just_now' => 'Just now',
+        'in' => 'in',
+        'at' => 'at',
+        'from' => 'from',
+        'to' => 'to',
+        'until' => 'until',
+        'since' => 'since',
+        'before' => 'before',
+        'after' => 'after',
+        'date' => 'Date',
+        'time' => 'Time',
+        'datetime' => 'Date & Time',
+        'duration' => 'Duration',
+        'period' => 'Period',
+    ],
+
+    // Navigation
+    'navigation' => [
+        'menu' => 'Menu',
+        'sidebar' => 'Sidebar',
+        'navbar' => 'Navigation Bar',
+        'footer' => 'Footer',
+        'breadcrumb' => 'Breadcrumb',
+        'profile' => 'Profile',
+        'settings' => 'Settings',
+        'logout' => 'Logout',
+        'login' => 'Login',
+        'register' => 'Register',
+    ],
+
+    // User roles
+    'roles' => [
+        'super_admin' => 'Super Admin',
+        'company_admin' => 'Company Admin',
+        'public_user' => 'Public User',
+        'participant' => 'Participant',
+    ],
+];

@@ -1,0 +1,180 @@
+<?php
+
+return [
+    /*
+    |--------------------------------------------------------------------------
+    | Application Language Lines
+    |--------------------------------------------------------------------------
+    |
+    | The following language lines are used throughout the application for
+    | various messages that we need to display to the user.
+    |
+    */
+
+    'welcome' => 'Selamat Datang di RuangTes',
+    'dashboard' => 'Dashboard',
+    'home' => 'Beranda',
+    'back' => 'Kembali',
+    'next' => 'Selanjutnya',
+    'previous' => 'Sebelumnya',
+    'continue' => 'Lanjutkan',
+    'cancel' => 'Batal',
+    'save' => 'Simpan',
+    'edit' => 'Edit',
+    'delete' => 'Hapus',
+    'create' => 'Buat',
+    'update' => 'Perbarui',
+    'view' => 'Lihat',
+    'show' => 'Tampilkan',
+    'hide' => 'Sembunyikan',
+    'search' => 'Cari',
+    'filter' => 'Filter',
+    'sort' => 'Urutkan',
+    'export' => 'Ekspor',
+    'import' => 'Impor',
+    'download' => 'Unduh',
+    'upload' => 'Unggah',
+    'refresh' => 'Refresh',
+    'reset' => 'Reset',
+    'clear' => 'Bersihkan',
+    'select' => 'Pilih',
+    'choose' => 'Pilih',
+    'all' => 'Semua',
+    'none' => 'Tidak Ada',
+    'yes' => 'Ya',
+    'no' => 'Tidak',
+    'true' => 'Benar',
+    'false' => 'Salah',
+    'active' => 'Aktif',
+    'inactive' => 'Tidak Aktif',
+    'enabled' => 'Diaktifkan',
+    'disabled' => 'Dinonaktifkan',
+    'pending' => 'Menunggu',
+    'approved' => 'Disetujui',
+    'rejected' => 'Ditolak',
+    'completed' => 'Selesai',
+    'failed' => 'Gagal',
+    'success' => 'Berhasil',
+    'error' => 'Error',
+    'warning' => 'Peringatan',
+    'info' => 'Informasi',
+    'notice' => 'Pemberitahuan',
+
+    // Status messages
+    'status' => [
+        'active' => 'Aktif',
+        'inactive' => 'Tidak Aktif',
+        'pending' => 'Menunggu',
+        'suspended' => 'Ditangguhkan',
+        'banned' => 'Diblokir',
+        'expired' => 'Kadaluarsa',
+        'completed' => 'Selesai',
+        'in_progress' => 'Sedang Berlangsung',
+        'cancelled' => 'Dibatalkan',
+        'refunded' => 'Dikembalikan',
+    ],
+
+    // Actions
+    'actions' => [
+        'create' => 'Buat',
+        'edit' => 'Edit',
+        'delete' => 'Hapus',
+        'view' => 'Lihat',
+        'update' => 'Perbarui',
+        'save' => 'Simpan',
+        'cancel' => 'Batal',
+        'submit' => 'Kirim',
+        'send' => 'Kirim',
+        'invite' => 'Undang',
+        'assign' => 'Tetapkan',
+        'start' => 'Mulai',
+        'stop' => 'Berhenti',
+        'pause' => 'Jeda',
+        'resume' => 'Lanjutkan',
+        'complete' => 'Selesaikan',
+        'approve' => 'Setujui',
+        'reject' => 'Tolak',
+        'verify' => 'Verifikasi',
+        'activate' => 'Aktifkan',
+        'deactivate' => 'Nonaktifkan',
+        'suspend' => 'Tangguhkan',
+        'ban' => 'Blokir',
+        'unban' => 'Buka Blokir',
+    ],
+
+    // Common messages
+    'messages' => [
+        'created_successfully' => 'Berhasil dibuat.',
+        'updated_successfully' => 'Berhasil diperbarui.',
+        'deleted_successfully' => 'Berhasil dihapus.',
+        'saved_successfully' => 'Berhasil disimpan.',
+        'sent_successfully' => 'Berhasil dikirim.',
+        'no_data_found' => 'Tidak ada data ditemukan.',
+        'no_results_found' => 'Tidak ada hasil ditemukan.',
+        'loading' => 'Memuat...',
+        'processing' => 'Memproses...',
+        'please_wait' => 'Mohon tunggu...',
+        'confirm_delete' => 'Apakah Anda yakin ingin menghapus item ini?',
+        'confirm_action' => 'Apakah Anda yakin ingin melakukan tindakan ini?',
+        'unsaved_changes' => 'Anda memiliki perubahan yang belum disimpan. Apakah Anda yakin ingin keluar?',
+        'session_expired' => 'Sesi Anda telah kedaluwarsa. Silakan login kembali.',
+        'access_denied' => 'Akses ditolak.',
+        'permission_denied' => 'Anda tidak memiliki izin untuk melakukan tindakan ini.',
+        'invalid_request' => 'Permintaan tidak valid.',
+        'something_went_wrong' => 'Terjadi kesalahan. Silakan coba lagi.',
+    ],
+
+    // Pagination
+    'pagination' => [
+        'showing' => 'Menampilkan :first sampai :last dari :total hasil',
+        'previous' => 'Sebelumnya',
+        'next' => 'Selanjutnya',
+        'first' => 'Pertama',
+        'last' => 'Terakhir',
+    ],
+
+    // Date/Time
+    'datetime' => [
+        'today' => 'Hari ini',
+        'yesterday' => 'Kemarin',
+        'tomorrow' => 'Besok',
+        'now' => 'Sekarang',
+        'ago' => 'yang lalu',
+        'just_now' => 'Baru saja',
+        'in' => 'dalam',
+        'at' => 'pada',
+        'from' => 'dari',
+        'to' => 'ke',
+        'until' => 'sampai',
+        'since' => 'sejak',
+        'before' => 'sebelum',
+        'after' => 'sesudah',
+        'date' => 'Tanggal',
+        'time' => 'Waktu',
+        'datetime' => 'Tanggal & Waktu',
+        'duration' => 'Durasi',
+        'period' => 'Periode',
+    ],
+
+    // Navigation
+    'navigation' => [
+        'menu' => 'Menu',
+        'sidebar' => 'Sidebar',
+        'navbar' => 'Bilah Navigasi',
+        'footer' => 'Footer',
+        'breadcrumb' => 'Breadcrumb',
+        'profile' => 'Profil',
+        'settings' => 'Pengaturan',
+        'logout' => 'Keluar',
+        'login' => 'Masuk',
+        'register' => 'Daftar',
+    ],
+
+    // User roles
+    'roles' => [
+        'super_admin' => 'Super Admin',
+        'company_admin' => 'Admin Perusahaan',
+        'public_user' => 'Pengguna Publik',
+        'participant' => 'Peserta',
+    ],
+];

@@ -21,6 +21,11 @@ class UserRepository extends BaseRepository
         return $this->model->where('email', $email)->first();
     }
 
+    public function findByActivationToken(string $token): ?User
+    {
+        return $this->model->where('activation_token', $token)->first();
+    }
+
     /**
      * Get active users
      */
