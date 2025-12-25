@@ -34,18 +34,18 @@
                         </a>
                     </div>
                     <div class="p-2">
-                        <form class="form-horizontal" action="https://themesbrand.com/skote/layouts/index.html">
+                        <form class="form-horizontal" action="https://themesbrand.com/skote/layouts/index.html" wire:submit.prevent="login">
 
                             <div class="mb-3">
-                                <label for="username" class="form-label">Username</label>
-                                <input type="text" class="form-control" id="username" placeholder="Enter username">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="email" placeholder="Enter email" wire:model="email" autocomplete="email">
                             </div>
 
                             <div class="mb-3">
                                 <label class="form-label">Password</label>
                                 <div class="input-group auth-pass-inputgroup">
                                     <input type="password" class="form-control" placeholder="Enter password"
-                                        aria-label="Password" aria-describedby="password-addon">
+                                        aria-label="Password" aria-describedby="password-addon" wire:model="password" autocomplete="current-password">
                                     <button class="btn btn-light " type="button" id="password-addon"><i
                                             class="mdi mdi-eye-outline"></i></button>
                                 </div>

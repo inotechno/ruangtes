@@ -68,18 +68,6 @@ return new class extends Migration
             $table->index('subscription_end');
             $table->index('is_verified');
         });
-
-
-        // Alter columns to use enum types
-        DB::statement("ALTER TABLE companies ALTER COLUMN subscription_type DROP DEFAULT");
-        DB::statement("ALTER TABLE companies ALTER COLUMN status DROP DEFAULT");
-
-        DB::statement("ALTER TABLE companies ALTER COLUMN subscription_type TYPE subscription_type USING subscription_type::subscription_type");
-        DB::statement("ALTER TABLE companies ALTER COLUMN status TYPE company_status USING status::company_status");
-
-        // Set default values back
-        DB::statement("ALTER TABLE companies ALTER COLUMN subscription_type SET DEFAULT 'trial'");
-        DB::statement("ALTER TABLE companies ALTER COLUMN status SET DEFAULT 'pending'");
     }
 
     /**
@@ -88,7 +76,5 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('companies');
-        DB::statement('DROP TYPE IF EXISTS subscription_type');
-        DB::statement('DROP TYPE IF EXISTS company_status');
     }
 };

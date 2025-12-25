@@ -45,10 +45,7 @@ return new class extends Migration
             $table->index('is_active');
         });
 
-        // Alter column to use enum type
-        DB::statement("ALTER TABLE company_admins ALTER COLUMN role DROP DEFAULT");
-        DB::statement("ALTER TABLE company_admins ALTER COLUMN role TYPE admin_role USING role::admin_role");
-        DB::statement("ALTER TABLE company_admins ALTER COLUMN role SET DEFAULT 'admin'");
+      
     }
 
     /**
