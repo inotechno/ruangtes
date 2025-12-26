@@ -173,7 +173,10 @@ class AuthenticationService
                 'date_of_birth' => $userData['date_of_birth'] ?? null,
                 'gender' => $userData['gender'] ?? null,
                 'phone' => $userData['phone'] ?? null,
-                'city' => $userData['city'] ?? null,
+                'province' => $userData['province'] ?? null,
+                'regency' => $userData['regency'] ?? null,
+                'district' => $userData['district'] ?? null,
+                'village' => $userData['village'] ?? null,
                 'is_profile_complete' => false,
             ]);
 

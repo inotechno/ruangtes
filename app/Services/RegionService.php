@@ -2,70 +2,140 @@
 
 namespace App\Services;
 
-use App\Repositories\RegionRepository;
+use App\Models\Province;
+use App\Models\Regency;
+use App\Models\District;
+use App\Models\Village;
+use Illuminate\Database\Eloquent\Collection;
 
 class RegionService
 {
-    protected $regionRepository;
-
-    /**
-     * Create a new class instance.
-     */
-    public function __construct(RegionRepository $regionRepository)
-    {
-        $this->regionRepository = $regionRepository;
-    }
-
     /**
      * Get all provinces.
      *
-     * @return \Illuminate\Database\Eloquent\Collection
+     * @return Collection
      */
-    public function getProvinces(): \Illuminate\Database\Eloquent\Collection
+    public function getProvinces(): Collection
     {
-        return $this->regionRepository->getProvinces();
+        return Province::all();
+    }
+
+    /**
+     * Get province by code.
+     *
+     * @param string $provinceCode
+     * @return Province|null
+     */
+    public function getProvinceByCode(string $provinceCode): ?Province
+    {
+        return Province::where('code', $provinceCode)->first();
+    }
+
+    /**
+     * Get all regencies.
+     *
+     * @return Collection
+     */
+    public function getRegencies(): Collection
+    {
+        return Regency::all();
     }
 
     /**
      * Get regencies by province code.
      *
      * @param string $provinceCode
-     * @return \Illuminate\Database\Eloquent\Collection
+     * @return Collection
      */
-    public function getRegenciesByProvince(string $provinceCode): \Illuminate\Database\Eloquent\Collection
+    public function getRegenciesByProvince(string $provinceCode): Collection
     {
-        return $this->regionRepository->getRegenciesByProvince($provinceCode);
+        return Regency::where('province_code', $provinceCode)->get();
+    }
+
+    /**
+     * Get regency by code.
+     *
+     * @param string $regencyCode
+     * @return Regency|null
+     */
+    public function getRegencyByCode(string $regencyCode): ?Regency
+    {
+        return Regency::where('code', $regencyCode)->first();
+    }
+
+    /**
+     * Get all districts.
+     *
+     * @return Collection
+     */
+    public function getDistricts(): Collection
+    {
+        return District::all();
     }
 
     /**
      * Get districts by regency code.
      *
      * @param string $regencyCode
-     * @return \Illuminate\Database\Eloquent\Collection
+     * @return Collection
      */
-    public function getDistrictsByRegency(string $regencyCode): \Illuminate\Database\Eloquent\Collection
+    public function getDistrictsByRegency(string $regencyCode): Collection
     {
-        return $this->regionRepository->getDistrictsByRegency($regencyCode);
+        return District::where('regency_code', $regencyCode)->get();
+    }
+
+    /**
+     * Get district by code.
+     *
+     * @param string $districtCode
+     * @return District|null
+     */
+    public function getDistrictByCode(string $districtCode): ?District
+    {
+        return District::where('code', $districtCode)->first();
+    }
+
+    /**
+     * Get all villages.
+     *
+     * @return Collection
+     */
+    public function getVillages(): Collection
+    {
+        return Village::all();
     }
 
     /**
      * Get villages by district code.
      *
      * @param string $districtCode
-     * @return \Illuminate\Database\Eloquent\Collection
+     * @return Collection
      */
-    public function getVillagesByDistrict(string $districtCode): \Illuminate\Database\Eloquent\Collection
+    public function getVillagesByDistrict(string $districtCode): Collection
     {
-        return $this->regionRepository->getVillagesByDistrict($districtCode);
+        return Village::where('district_code', $districtCode)->get();
     }
 
     /**
-     * Get all regions.
+     * Get village by code.
      *
-     * @return \Illuminate\Database\Eloquent\Collection
+     * @param string $villageCode
+     * @return Village|null
      */
-    public function getAllRegions(): \Illuminate\Database\Eloquent\Collection
+    public function getVillageByCode(string $villageCode): ?Village
     {
-        return $this->regionRepository->getAllRegions();
+        return Village::where('code', $villageCode)->first();
+    }
+
+    /**
+     * Get all regions (province, regency, district, village) in hierarchical structure.
+     *
+     * @return Collection
+     */
+    public function getAllRegionsHierarchy(): Collection
+    {
+        return Province::with([
+            'regencies.districts.villages'
+        ])->get();
     }
 }

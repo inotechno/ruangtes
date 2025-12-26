@@ -30,7 +30,7 @@ class Login extends Component
     public function login()
     {
         $this->validate();
-
+        
     }
 
     public function render()
