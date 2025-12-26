@@ -20,10 +20,12 @@ class Register extends Component
     public $email;
     public $password;
     public $password_confirmation;
+    public $genders = [];
 
     public function mount()
     {
         $this->provinces = $this->getProvinces();
+        $this->genders = Gender::cases();
     }
 
     public function rules()
@@ -74,17 +76,17 @@ class Register extends Component
         ];
     }
 
-    public function updatedProvince($value)
+    public function updatedProvince()
     {
         $this->regencies = $this->getRegencies();
     }
 
-    public function updatedRegency($value)
+    public function updatedRegency()
     {
         $this->districts = $this->getDistricts();
     }
 
-    public function updatedDistrict($value)
+    public function updatedDistrict()
     {
         $this->villages = $this->getVillages();
     }

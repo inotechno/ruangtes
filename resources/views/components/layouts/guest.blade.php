@@ -17,6 +17,7 @@
     <!-- App Css-->
     <link href="{{ asset('css/app.min.css') }}" id="app-style" rel="stylesheet" type="text/css" />
 
+    @stack('styles')
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @livewireStyles
 </head>
@@ -36,6 +37,7 @@
     <!-- App js -->
     <script src="{{ asset('js/app.min.js') }}"></script>
     @livewireScripts
+    @stack('scripts')
 </body>
 
 </html>

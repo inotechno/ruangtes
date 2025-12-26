@@ -10,6 +10,10 @@ class Regency extends Model
 {
     use HasFactory, Notifiable;
 
+    protected $primaryKey = 'code';
+    public $incrementing = false;
+    protected $keyType = 'string';
+
     protected $fillable = [
         'code',
         'name',

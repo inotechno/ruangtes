@@ -17,7 +17,7 @@ class RegionService
      */
     public function getProvinces(): Collection
     {
-        return Province::all();
+        return Province::select('code', 'name')->get();
     }
 
     /**
@@ -38,7 +38,7 @@ class RegionService
      */
     public function getRegencies(): Collection
     {
-        return Regency::all();
+        return Regency::select('code', 'name', 'province_code')->get();
     }
 
     /**
@@ -49,7 +49,7 @@ class RegionService
      */
     public function getRegenciesByProvince(string $provinceCode): Collection
     {
-        return Regency::where('province_code', $provinceCode)->get();
+        return Regency::where('province_code', $provinceCode)->select('code', 'name', 'province_code')->get();
     }
 
     /**
@@ -60,7 +60,7 @@ class RegionService
      */
     public function getRegencyByCode(string $regencyCode): ?Regency
     {
-        return Regency::where('code', $regencyCode)->first();
+        return Regency::where('code', $regencyCode)->select('code', 'name', 'province_code')->first();
     }
 
     /**
@@ -70,7 +70,7 @@ class RegionService
      */
     public function getDistricts(): Collection
     {
-        return District::all();
+        return District::select('code', 'name', 'regency_code')->get();
     }
 
     /**
@@ -81,7 +81,7 @@ class RegionService
      */
     public function getDistrictsByRegency(string $regencyCode): Collection
     {
-        return District::where('regency_code', $regencyCode)->get();
+        return District::where('regency_code', $regencyCode)->select('code', 'name', 'regency_code')->get();
     }
 
     /**
@@ -92,7 +92,7 @@ class RegionService
      */
     public function getDistrictByCode(string $districtCode): ?District
     {
-        return District::where('code', $districtCode)->first();
+        return District::where('code', $districtCode)->select('code', 'name', 'regency_code')->first();
     }
 
     /**
@@ -102,7 +102,7 @@ class RegionService
      */
     public function getVillages(): Collection
     {
-        return Village::all();
+        return Village::select('code', 'name', 'district_code')->get();
     }
 
     /**
@@ -113,7 +113,7 @@ class RegionService
      */
     public function getVillagesByDistrict(string $districtCode): Collection
     {
-        return Village::where('district_code', $districtCode)->get();
+        return Village::where('district_code', $districtCode)->select('code', 'name', 'district_code')->get();
     }
 
     /**
@@ -124,7 +124,7 @@ class RegionService
      */
     public function getVillageByCode(string $villageCode): ?Village
     {
-        return Village::where('code', $villageCode)->first();
+        return Village::where('code', $villageCode)->select('code', 'name', 'district_code')->first();
     }
 
     /**
