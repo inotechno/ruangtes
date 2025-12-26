@@ -16,10 +16,13 @@
     <link href="{{ asset('css/icons.min.css') }}" rel="stylesheet" type="text/css" />
     <!-- App Css-->
     <link href="{{ asset('css/app.min.css') }}" id="app-style" rel="stylesheet" type="text/css" />
+
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @livewireStyles
 </head>
 
 <body>
-    <div class="account-pages my-5 pt-sm-5">
+    <div class="account-pages my-2 pt-sm-4">
         {{ $slot }}
     </div>
 
@@ -31,9 +34,8 @@
     <script src="{{ asset('libs/node-waves/waves.min.js') }}"></script>
 
     <!-- App js -->
-    <script src="{{ asset('js/app.js') }}"></script>
-
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="{{ asset('js/app.min.js') }}"></script>
+    @livewireScripts
 </body>
 
 </html>

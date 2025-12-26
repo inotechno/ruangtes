@@ -168,4 +168,38 @@ class Test extends Model
             }
         });
     }
+
+    // Helper Methods
+    public function getProgressPercentage()
+    {
+        if ($this->total_assigned_tests === 0) {
+            return 0;
+        }
+        
+        return ($this->completed_tests / $this->total_assigned_tests) * 100;
+    }
+    
+    public function updateSummary()
+    {
+        $total = $this->assignments()->count();
+        $completed = $this->assignments()->where('status', 'completed')->count();
+        $inProgress = $this->assignments()->whereIn('status', ['instructions', 'in_progress', 'paused'])->count();
+        $pending = $this->assignments()->where('status', 'available')->count();
+        
+        $this->update([
+            'total_assigned_tests' => $total,
+            'completed_tests' => $completed,
+            'in_progress_tests' => $inProgress,
+            'pending_tests' => $pending,
+            'status' => $this->determineOverallStatus($total, $completed),
+        ]);
+    }
+    
+    private function determineOverallStatus($total, $completed)
+    {
+        if ($total === 0) return 'pending';
+        if ($completed === $total) return 'completed';
+        if ($this->assignments()->whereIn('status', ['instructions', 'in_progress'])->exists()) return 'testing';
+        return 'active';
+    }
 }

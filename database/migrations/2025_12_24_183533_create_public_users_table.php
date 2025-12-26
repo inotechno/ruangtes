@@ -21,8 +21,10 @@ return new class extends Migration
             // Contact info
             $table->string('phone')->nullable();
             $table->text('address')->nullable();
-            $table->string('city')->nullable();
-            $table->string('province')->nullable();
+            $table->string('province_code')->nullable();
+            $table->string('regency_code')->nullable();
+            $table->string('district_code')->nullable();
+            $table->string('village_code')->nullable();
             
             // Education & career
             $table->string('education_level')->nullable()->comment('Tingkat pendidikan');
@@ -57,6 +59,10 @@ return new class extends Migration
             $table->index('date_of_birth');
             $table->index('is_profile_complete');
             $table->index('total_tests_taken');
+            $table->index('province_code');
+            $table->index('regency_code');
+            $table->index('district_code');
+            $table->index('village_code');
         });
     }
 

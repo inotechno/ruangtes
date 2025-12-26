@@ -12,6 +12,8 @@ return [
     | these language lines according to your application's requirements.
     |
     */
+    'welcome_back' => 'Welcome Back!',
+    'sign_in_to_continue' => 'Sign in to continue to :app_name.',
 
     'failed' => 'These credentials do not match our records.',
     'password' => 'The provided password is incorrect.',

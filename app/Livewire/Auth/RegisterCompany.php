@@ -8,6 +8,6 @@ class RegisterCompany extends Component
 {
     public function render()
     {
-        return view('livewire.auth.register-company');
+        return view('livewire.auth.register-company')->layout('components.layouts.guest', ['title' => 'Register Company']);
     }
 }

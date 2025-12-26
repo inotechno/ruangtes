@@ -16,6 +16,9 @@
     <link href="{{ asset('css/icons.min.css') }}" rel="stylesheet" type="text/css" />
     <!-- App Css-->
     <link href="{{ asset('css/app.min.css') }}" id="app-style" rel="stylesheet" type="text/css" />
+
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @livewireStyles
 </head>
 
 <body>
@@ -29,9 +32,8 @@
     <script src="{{ asset('libs/node-waves/waves.min.js') }}"></script>
 
     <!-- App js -->
-    <script src="{{ asset('js/app.js') }}"></script>
-
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="{{ asset('js/app.min.js') }}"></script>
+    @livewireScripts
 </body>
 
 </html>

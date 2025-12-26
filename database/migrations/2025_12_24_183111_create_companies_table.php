@@ -21,16 +21,11 @@ return new class extends Migration
             $table->string('phone')->nullable();
             $table->string('website')->nullable();
             $table->text('address')->nullable();
-            $table->string('city')->nullable();
-            $table->string('province')->nullable();
+            $table->string('province_code')->nullable();
+            $table->string('regency_code')->nullable();
+            $table->string('district_code')->nullable();
+            $table->string('village_code')->nullable();
             $table->string('country')->nullable()->default('Indonesia');
-            $table->string('postal_code')->nullable();
-            
-            // Company branding
-            $table->string('logo')->nullable();
-            $table->string('favicon')->nullable();
-            $table->string('primary_color')->default('#3B82F6');
-            $table->string('secondary_color')->default('#1E40AF');
             
             // Subscription info
             $table->enum('subscription_type', SubscriptionType::cases())->default(SubscriptionType::TRIAL);
@@ -38,7 +33,7 @@ return new class extends Migration
             $table->timestamp('subscription_end')->nullable();
             $table->integer('max_participants')->default(0)->comment('Jumlah peserta maksimal');
             $table->integer('current_participants')->default(0)->comment('Jumlah peserta aktif');
-            
+
             // Billing info
             $table->string('billing_name')->nullable();
             $table->string('billing_email')->nullable();
