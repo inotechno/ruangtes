@@ -9,6 +9,22 @@
     <meta content="Themesbrand" name="author" />
     <!-- App favicon -->
     <link rel="shortcut icon" href="{{ asset('images/favicon.ico') }}">
+    <!-- Tambahkan ini -->
+    <meta name="base-url" content="{{ url('/') }}">
+    <meta name="asset-url" content="{{ asset('') }}">
+    
+    <!-- Script untuk set global variable -->
+    <script>
+        window.appBaseUrl = '{{ url("/") }}';
+        window.assetUrl = '{{ asset("") }}';
+        
+        // Atau buat object global
+        window.Laravel = {
+            baseUrl: '{{ url("/") }}',
+            assetUrl: '{{ asset("") }}',
+            csrfToken: '{{ csrf_token() }}'
+        };
+    </script>
 
     <!-- Bootstrap Css -->
     <link href="{{ asset('css/bootstrap.min.css') }}" id="bootstrap-style" rel="stylesheet" type="text/css" />
@@ -16,14 +32,14 @@
     <link href="{{ asset('css/icons.min.css') }}" rel="stylesheet" type="text/css" />
     <!-- App Css-->
     <link href="{{ asset('css/app.min.css') }}" id="app-style" rel="stylesheet" type="text/css" />
-
+    
     @stack('styles')
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @livewireStyles
 </head>
 
 <body>
-    <div class="account-pages my-2 pt-sm-4">
+    <div class="account-pages my-2 pt-md-5">
         {{ $slot }}
     </div>
 

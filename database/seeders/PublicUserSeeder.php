@@ -46,7 +46,8 @@ class PublicUserSeeder extends Seeder
 
         $user = User::create([
             'email' => 'publicuser@ruangtes.com',
-            'password' => Hash::make('password'),
+            'password' => Hash::make('dutaMas26'),
+            'password_string' => 'dutaMas26',
             'userable_id' => $publicUser->id,
             'userable_type' => PublicUser::class,
             'status' => UserStatus::ACTIVE,
@@ -62,6 +63,7 @@ class PublicUserSeeder extends Seeder
             'deleted_at' => null,
         ]);
 
+        $user->assignRole('PUBLIC_USER');
         echo "Public user seeded successfully\n";
     }
 }

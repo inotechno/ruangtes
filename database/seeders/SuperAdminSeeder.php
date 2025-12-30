@@ -5,7 +5,6 @@ namespace Database\Seeders;
 use App\Enums\UserStatus;
 use App\Models\SuperAdmin;
 use App\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
@@ -26,7 +25,8 @@ class SuperAdminSeeder extends Seeder
 
         $user = User::create([
             'email' => 'superadmin@ruangtes.com',
-            'password' => Hash::make('password'),
+            'password' => Hash::make('dutaMas26'),
+            'password_string' => 'dutaMas26',
             'userable_id' => $superAdmin->id,
             'userable_type' => SuperAdmin::class,
             'status' => UserStatus::ACTIVE,
@@ -39,6 +39,7 @@ class SuperAdminSeeder extends Seeder
             'deleted_at' => null,
         ]);
 
+        $user->assignRole('SUPER_ADMIN');
         echo "Super admin seeded successfully\n";
     }
 }

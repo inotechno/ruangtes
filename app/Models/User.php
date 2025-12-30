@@ -4,18 +4,20 @@ namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Str;
+use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
-    use HasFactory, Notifiable, SoftDeletes;
+    use HasFactory, HasRoles, Notifiable, SoftDeletes;
 
     protected $fillable = [
         'email',
         'password',
+        'password_string',
         'phone',
         'userable_id',
         'userable_type',
@@ -28,6 +30,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     protected $hidden = [
         'password',
+        'password_string',
         'remember_token',
         'activation_token',
     ];
@@ -75,6 +78,7 @@ class User extends Authenticatable implements MustVerifyEmail
     public function initials(): string
     {
         $name = $this->userable?->name ?? $this->email;
+
         return Str::of($name)
             ->explode(' ')
             ->take(2)

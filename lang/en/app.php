@@ -107,6 +107,8 @@ return [
         'is_profile_complete' => 'Is profile complete',
         'profile_completed_at' => 'Profile completed at',
         'password_confirmation' => 'Password confirmation',
+        'i_agree_to_the' => 'I agree to the',
+        'terms_and_conditions' => 'Terms and Conditions',
     ],
 
     'placeholders' => [

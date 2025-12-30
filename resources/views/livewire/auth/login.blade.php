@@ -71,7 +71,7 @@
 
                             <div class="mb-3 d-flex justify-content-between">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="remember-check">
+                                    <input class="form-check-input" type="checkbox" id="remember-check" wire:model="remember">
                                     <label class="form-check-label" for="remember-check">
                                         {{ __('app.labels.remember_me') }}
                                     </label>

@@ -228,6 +228,8 @@ return [
         'is_profile_complete' => 'Apakah profil lengkap',
         'profile_completed_at' => 'Tanggal profil lengkap',
         'password_confirmation' => 'Konfirmasi password',
+        'i_agree_to_the' => 'Saya setuju dengan',
+        'terms_and_conditions' => 'Syarat dan Ketentuan',
     ],
 
     'placeholders' => [

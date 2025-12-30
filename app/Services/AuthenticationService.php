@@ -2,28 +2,33 @@
 
 namespace App\Services;
 
+use App\Enums\AdminRole;
+use App\Enums\UserStatus;
 use App\Events\PasswordReset;
 use App\Events\Registered;
 use App\Events\WelcomeEmail;
 use App\Models\CompanyAdmin;
 use App\Models\PublicUser;
 use App\Models\User;
-use App\Repositories\UserRepository;
+use App\Repositories\CompanyAdminRepository;
 use App\Repositories\CompanyRepository;
 use App\Repositories\PublicUserRepository;
-use App\Repositories\CompanyAdminRepository;
+use App\Repositories\UserRepository;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use App\Enums\UserStatus;
-use App\Enums\AdminRole;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Str;
 
 class AuthenticationService
 {
     protected $userRepository;
+
     protected $companyRepository;
+
     protected $companyAdminRepository;
+
     protected $publicUserRepository;
+
     /**
      * Create a new class instance.
      */
@@ -38,7 +43,7 @@ class AuthenticationService
     public function authenticate(array $credentials, string $guard = 'web')
     {
         $user = $this->userRepository->findByEmail($credentials['email']);
-        if (!$user) {
+        if (! $user) {
             return [
                 'success' => false,
                 'message' => __('app.messages.no_data_found'),
@@ -50,13 +55,13 @@ class AuthenticationService
         if ($user->status != UserStatus::ACTIVE->value) {
             return [
                 'success' => false,
-                'message' => __('app.status.' . $user->status),
+                'message' => __('app.status.'.$user->status),
                 'user' => null,
                 'redirect_to' => null,
             ];
         }
 
-        if (!Hash::check($credentials['password'], $user->password)) {
+        if (! Hash::check($credentials['password'], $user->password)) {
             return [
                 'success' => false,
                 'message' => __('auth.password'),
@@ -64,6 +69,8 @@ class AuthenticationService
                 'redirect_to' => null,
             ];
         }
+
+        Auth::guard($guard)->login($user, $credentials['remember'] ?? false);
 
         // Update Last Login
         $this->userRepository->updateLastLogin($user, request()->ip());
@@ -75,7 +82,7 @@ class AuthenticationService
             'success' => true,
             'message' => __('auth.authenticated'),
             'user' => $user,
-            'redirect_to' => $redirectTo
+            'redirect_to' => $redirectTo,
         ];
     }
 
@@ -86,7 +93,7 @@ class AuthenticationService
     {
         try {
             \DB::beginTransaction();
-            
+
             // 1. Create company
             $company = $this->companyRepository->create([
                 'code' => $this->generateCompanyCode($companyData['name']),
@@ -144,7 +151,7 @@ class AuthenticationService
                 'success' => true,
                 'message' => __('auth.registration_success'),
                 'company' => $company,
-                'user' => $user
+                'user' => $user,
             ];
 
         } catch (\Exception $e) {
@@ -154,7 +161,7 @@ class AuthenticationService
                 'success' => false,
                 'message' => __('auth.registration_failed', ['message' => $e->getMessage()]),
                 'company' => null,
-                'user' => null
+                'user' => null,
             ];
         }
     }
@@ -200,7 +207,7 @@ class AuthenticationService
                 'success' => true,
                 'message' => __('auth.registration_success'),
                 'user' => $user,
-                'public_user' => $publicUser
+                'public_user' => $publicUser,
             ];
 
         } catch (\Exception $e) {
@@ -210,7 +217,7 @@ class AuthenticationService
                 'success' => false,
                 'message' => __('auth.registration_failed', ['message' => $e->getMessage()]),
                 'user' => null,
-                'public_user' => null
+                'public_user' => null,
             ];
         }
     }
@@ -222,17 +229,17 @@ class AuthenticationService
     {
         $user = $this->userRepository->findByActivationToken($token);
 
-        if (!$user) {
+        if (! $user) {
             return [
                 'success' => false,
-                'message' => __('auth.verification_token_invalid')
+                'message' => __('auth.verification_token_invalid'),
             ];
         }
 
         if ($user->email_verified_at) {
             return [
                 'success' => true,
-                'message' => __('auth.email_already_verified')
+                'message' => __('auth.email_already_verified'),
             ];
         }
 
@@ -262,7 +269,7 @@ class AuthenticationService
         return [
             'success' => true,
             'message' => __('auth.email_verified_successfully'),
-            'user' => $user
+            'user' => $user,
         ];
     }
 
@@ -273,17 +280,17 @@ class AuthenticationService
     {
         $user = $this->userRepository->findByEmail($email);
 
-        if (!$user) {
+        if (! $user) {
             return [
                 'success' => false,
-                'message' => __('auth.user_not_found')
+                'message' => __('auth.user_not_found'),
             ];
         }
 
         if ($user->status !== UserStatus::ACTIVE->value) {
             return [
                 'success' => false,
-                'message' => $this->getInactiveMessage($user->status)
+                'message' => $this->getInactiveMessage($user->status),
             ];
         }
 
@@ -295,7 +302,7 @@ class AuthenticationService
 
         return [
             'success' => true,
-            'message' => __('passwords.sent')
+            'message' => __('passwords.sent'),
         ];
     }
 
@@ -306,18 +313,18 @@ class AuthenticationService
     {
         $user = $this->userRepository->findByEmail($data['email']);
 
-        if (!$user) {
+        if (! $user) {
             return [
                 'success' => false,
-                'message' => __('auth.user_not_found')
+                'message' => __('auth.user_not_found'),
             ];
         }
 
         // Verify token
-        if (!Password::tokenExists($user, $data['token'])) {
+        if (! Password::tokenExists($user, $data['token'])) {
             return [
                 'success' => false,
-                'message' => __('auth.verification_token_invalid')
+                'message' => __('auth.verification_token_invalid'),
             ];
         }
 
@@ -334,7 +341,7 @@ class AuthenticationService
 
         return [
             'success' => true,
-            'message' => __('passwords.reset')
+            'message' => __('passwords.reset'),
         ];
     }
 
@@ -344,10 +351,10 @@ class AuthenticationService
     public function changePassword(User $user, array $data): array
     {
         // Verify current password
-        if (!Hash::check($data['current_password'], $user->password)) {
+        if (! Hash::check($data['current_password'], $user->password)) {
             return [
                 'success' => false,
-                'message' => 'Password saat ini salah.'
+                'message' => 'Password saat ini salah.',
             ];
         }
 
@@ -358,7 +365,7 @@ class AuthenticationService
 
         return [
             'success' => true,
-            'message' => 'Password berhasil diubah.'
+            'message' => 'Password berhasil diubah.',
         ];
     }
 
@@ -369,24 +376,24 @@ class AuthenticationService
     {
         $user = $this->userRepository->findByEmail($email);
 
-        if (!$user) {
+        if (! $user) {
             return [
                 'success' => false,
-                'message' => __('auth.user_not_found')
+                'message' => __('auth.user_not_found'),
             ];
         }
 
         if ($user->email_verified_at) {
             return [
                 'success' => false,
-                'message' => __('auth.email_already_verified')
+                'message' => __('auth.email_already_verified'),
             ];
         }
 
         // Generate new token if expired
-        if (!$user->activation_token) {
+        if (! $user->activation_token) {
             $this->userRepository->update($user->id, [
-                'activation_token' => Str::random(64)
+                'activation_token' => Str::random(64),
             ]);
             $user->refresh();
         }
@@ -395,7 +402,7 @@ class AuthenticationService
 
         return [
             'success' => true,
-            'message' => __('auth.verification_email_sent')
+            'message' => __('auth.verification_email_sent'),
         ];
     }
 
@@ -409,7 +416,7 @@ class AuthenticationService
         $counter = 1;
 
         while ($this->companyRepository->existsByCode($code)) {
-            $code = $baseCode . str_pad($counter, 2, '0', STR_PAD_LEFT);
+            $code = $baseCode.str_pad($counter, 2, '0', STR_PAD_LEFT);
             $counter++;
         }
 
@@ -421,12 +428,19 @@ class AuthenticationService
      */
     private function getRedirectRoute(User $user): string
     {
-        return match (class_basename($user->userable_type)) {
-            'SuperAdmin' => route('admin.dashboard'),
-            'CompanyAdmin' => route('company.dashboard'),
-            'PublicUser' => route('public.dashboard'),
-            default => '/'
-        };
+        if ($user->isSuperAdmin()) {
+            return route('super-admin.dashboard');
+        }
+
+        if ($user->isCompanyAdmin()) {
+            return route('company.dashboard');
+        }
+
+        if ($user->isPublicUser()) {
+            return route('public.dashboard');
+        }
+
+        return route('login');
     }
 
     /**

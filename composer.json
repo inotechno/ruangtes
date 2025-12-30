@@ -18,9 +18,11 @@
         "laravel/tinker": "^2.10.1",
         "livewire/volt": "^1.7.0",
         "maatwebsite/excel": "^3.1",
-        "predis/predis": "^3.3"
+        "predis/predis": "^3.3",
+        "spatie/laravel-permission": "^6.24"
     },
     "require-dev": {
+        "laravel/telescope": "^5.16",
         "fakerphp/faker": "^1.23",
         "laravel/boost": "*",
         "laravel/pail": "^1.2.2",
@@ -86,7 +88,9 @@
     },
     "extra": {
         "laravel": {
-            "dont-discover": []
+            "dont-discover": [
+                "laravel/telescope"
+            ]
         }
     },
     "config": {

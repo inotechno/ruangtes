@@ -3,10 +3,10 @@
 namespace Database\Seeders;
 
 use App\Enums\AdminRole;
-use App\Enums\UserStatus;
-use App\Models\Company;
 use App\Enums\CompanyStatus;
 use App\Enums\SubscriptionType;
+use App\Enums\UserStatus;
+use App\Models\Company;
 use App\Models\CompanyAdmin;
 use App\Models\User;
 use Illuminate\Database\Seeder;
@@ -67,6 +67,7 @@ class CompanySeeder extends Seeder
             'deleted_at' => null,
         ]);
 
+        $user->assignRole('COMPANY_ADMIN');
         echo "Company seeded successfully\n";
     }
 }

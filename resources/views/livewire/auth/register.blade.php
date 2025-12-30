@@ -3,7 +3,7 @@
         <div class="col-md-10 col-lg-8 col-xl-6">
             <div class="card overflow-hidden">
                 {{-- Header --}}
-                <div class="bg-primary bg-soft h-100">
+                <div class="bg-primary bg-soft ">
                     <div class="row">
                         <div class="col-7">
                             <div class="text-primary p-4">
@@ -188,6 +188,15 @@
                             <div class="col-md-6">
                                 <label class="form-label">{{ __('app.labels.password_confirmation') }}</label>
                                 <input type="password" wire:model="password_confirmation" class="form-control">
+                            </div>
+
+                            {{-- Terms and Conditions --}}
+                            <div class="col-12">
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" id="terms" wire:model="terms">
+                                    <label class="form-check-label" for="terms">{{ __('app.labels.i_agree_to_the') }} <a href="#">{{ __('app.labels.terms_and_conditions') }}</a></label>
+                                    @error('terms') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                                </div>
                             </div>
 
                             {{-- Submit --}}
